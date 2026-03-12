@@ -1,55 +1,151 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - LKPD Matematika</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
-        .container { background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
-        h2 { color: #2980b9; margin-top: 25px; }
-        p { margin-bottom: 15px; }
-        .footer { margin-top: 30px; font-size: 0.9em; color: #7f8c8d; text-align: center; }
-        .contact { background: #e8f4fd; padding: 15px; border-radius: 5px; border-left: 5px solid #3498db; }
-    </style>
-</head>
-<body>
+import React from 'react';
+import { 
+  StyleSheet, 
+  View, 
+  Text, 
+  ScrollView, 
+  TouchableOpacity, 
+  SafeAreaView,
+  Linking 
+} from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import AppBackground from './AppBackground'; // Menggunakan background Bali Anda
+import NavigationHeader from './NavigationHeader';
 
-<div class="container">
-    <h1>Kebijakan Privasi</h1>
-    <p><strong>Aplikasi:</strong> LKPD Matematika</p>
-    <p><strong>Terakhir Diperbarui:</strong> 5 Maret 2026</p>
+const PrivacyPolicyScreen = ({ navigation }: any) => {
+  
+  const handleEmailPress = () => {
+    Linking.openURL('mailto:mudah.sumawe.app@gmail.com');
+  };
 
-    <p>Selamat datang di <strong>LKPD Matematika</strong>. Kami berkomitmen untuk melindungi privasi pengguna kami, terutama guru dan orang tua yang menggunakan aplikasi ini sebagai alat bantu belajar mengajar.</p>
+  return (
+    <View style={styles.container}>
+      {/* Background Utama dengan Overlay Gradien */}
+      <AppBackground />
+      
+      <SafeAreaView style={styles.safeArea}>
+        <NavigationHeader title="Kebijakan Privasi" />
+        
+        <ScrollView 
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.scrollContent}
+        >
+          <View style={styles.card}>
+            <Text style={styles.lastUpdated}>Terakhir Diperbarui: 12 Maret 2026</Text>
+            
+            <Text style={styles.paragraph}>
+              Selamat datang di <Text style={styles.bold}>LKPD BIN</Text>. Kami berkomitmen untuk melindungi privasi pengguna kami. Kebijakan Privasi ini menjelaskan bagaimana kami mengelola informasi dalam aplikasi mobile LKPD BIN.
+            </Text>
 
-    <h2>1. Informasi yang Kami Kumpulkan</h2>
-    <p>Aplikasi ini dirancang dengan prinsip <em>Privacy by Design</em>. Kami <strong>tidak mengumpulkan</strong> data pribadi apapun seperti nama, alamat, nomor telepon, atau lokasi pengguna.</p>
-    <ul>
-        <li><strong>Tanpa Login:</strong> Aplikasi dapat digunakan secara penuh tanpa perlu mendaftar atau masuk ke akun manapun.</li>
-        <li><strong>Tanpa Izin Perangkat:</strong> Kami tidak meminta akses ke penyimpanan (storage), galeri, kamera, atau kontak pada perangkat Anda.</li>
-    </ul>
+            <View style={styles.section}>
+              <Text style={styles.heading}>1. Informasi yang Kami Kumpulkan</Text>
+              <Text style={styles.paragraph}>
+                Aplikasi LKPD BIN dirancang sebagai aplikasi katalog statis yang berfokus pada konten pendidikan. Kami <Text style={styles.bold}>tidak</Text> mewajibkan pengguna untuk mendaftar akun atau memberikan data pribadi sensitif.
+              </Text>
+            </View>
 
-    <h2>2. Layanan Pihak Ketiga (Iklan)</h2>
-    <p>Aplikasi ini menampilkan iklan untuk mendukung pengembangan berkelanjutan. Kami menggunakan penyedia layanan iklan pihak ketiga yang mungkin mengumpulkan ID iklan perangkat (Advertising ID) secara anonim untuk keperluan teknis dan analitik.</p>
-    <p><strong>Penting:</strong> Iklan dalam aplikasi ini telah dikonfigurasi khusus untuk target audiens <strong>18 tahun ke atas</strong>. Hal ini bertujuan agar iklan yang muncul tetap terkontrol dan aman dalam lingkungan pendampingan belajar anak oleh orang tua atau guru.</p>
+            <View style={styles.section}>
+              <Text style={styles.heading}>2. Penggunaan Izin Perangkat</Text>
+              <Text style={styles.paragraph}>
+                • <Text style={styles.bold}>Penyimpanan:</Text> Digunakan untuk menyimpan file gambar LKPD yang Anda unduh ke galeri perangkat.{"\n"}
+                • <Text style={styles.bold}>Akses Internet:</Text> Digunakan untuk memuat aset digital dan memproses iklan.
+              </Text>
+            </View>
 
-    <h2>3. Keamanan Data</h2>
-    <p>Karena aplikasi ini tidak memerlukan izin penyimpanan dan tidak memiliki server database untuk data pengguna, seluruh aktivitas penggunaan aplikasi bersifat lokal pada perangkat Anda dan tidak dikirimkan kepada kami.</p>
+            <View style={styles.section}>
+              <Text style={styles.heading}>3. Layanan Pihak Ketiga & Iklan</Text>
+              <Text style={styles.paragraph}>
+                Kami menggunakan layanan iklan (Banner, Native, Reward) untuk mendukung pengembangan aplikasi ini secara gratis. Penyedia iklan dapat menggunakan pengidentifikasi iklan perangkat untuk menyajikan konten yang relevan.
+              </Text>
+            </View>
 
-    <h2>4. Privasi Anak</h2>
-    <p>LKPD Matematika adalah alat bantu bagi pendidik dan wali murid. Kami tidak secara sengaja mengumpulkan informasi identitas pribadi dari anak-anak. Jika Anda menemukan adanya data yang tidak sengaja terkirim, mohon segera hubungi kami.</p>
+            <View style={styles.section}>
+              <Text style={styles.heading}>4. Privasi Anak</Text>
+              <Text style={styles.paragraph}>
+                Konten LKPD BIN ditujukan untuk siswa SD. Kami sangat menyarankan penggunaan aplikasi ini di bawah pengawasan <Text style={styles.bold}>Orang Tua atau Guru</Text>.
+              </Text>
+            </View>
 
-    <h2>5. Hubungi Kami</h2>
-    <div class="contact">
-        <p>Jika Anda memiliki pertanyaan mengenai kebijakan privasi ini, silakan hubungi kami di:</p>
-        <strong>Email:</strong> <a href="mailto:mudah.sumawe.app@gmail.com">mudah.sumawe.app@gmail.com</a>
-    </div>
+            <View style={styles.section}>
+              <Text style={styles.heading}>5. Hubungi Kami</Text>
+              <Text style={styles.paragraph}>
+                Jika Anda memiliki pertanyaan mengenai Kebijakan Privasi kami, silakan hubungi kami melalui:
+              </Text>
+              <TouchableOpacity onPress={handleEmailPress} style={styles.emailButton}>
+                <Ionicons name="mail" size={20} color="#C9A84C" />
+                <Text style={styles.emailText}>mudah.sumawe.app@gmail.com</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </View>
+  );
+};
 
-    <div class="footer">
-        <p>&copy; 2026 LKPD Matematika Team. All rights reserved.</p>
-    </div>
-</div>
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  safeArea: {
+    flex: 1,
+  },
+  scrollContent: {
+    padding: 20,
+    paddingBottom: 40,
+  },
+  card: {
+    backgroundColor: 'rgba(123, 28, 46, 0.85)', // Deep Maroon dengan Opacity
+    borderRadius: 15,
+    borderWidth: 1.5,
+    borderColor: '#C9A84C', // Rich Gold Border
+    padding: 20,
+    marginTop: 10,
+  },
+  lastUpdated: {
+    color: '#C9A84C',
+    fontSize: 12,
+    fontFamily: 'Plus Jakarta Sans', // Sesuai PRD Anda
+    marginBottom: 15,
+    fontStyle: 'italic',
+  },
+  heading: {
+    color: '#C9A84C', // Rich Gold
+    fontSize: 18,
+    fontFamily: 'Playfair Display', // Sesuai PRD Anda
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  paragraph: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    lineHeight: 22,
+    fontFamily: 'Plus Jakarta Sans',
+    textAlign: 'justify',
+  },
+  bold: {
+    fontWeight: 'bold',
+    color: '#C9A84C',
+  },
+  section: {
+    marginTop: 20,
+  },
+  emailButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 10,
+    backgroundColor: 'rgba(26, 58, 74, 0.6)', // Midnight Teal overlay
+    padding: 12,
+    borderRadius: 8,
+    borderWidth: 0.5,
+    borderColor: '#C9A84C',
+  },
+  emailText: {
+    color: '#C9A84C',
+    marginLeft: 10,
+    fontSize: 14,
+    fontWeight: '600',
+  },
+});
 
-</body>
-</html>
+export default PrivacyPolicyScreen;
